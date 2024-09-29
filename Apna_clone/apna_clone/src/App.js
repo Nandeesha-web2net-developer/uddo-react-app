@@ -43,7 +43,6 @@ const App = () => {
           <Route path='/serch-results' element={<SearchResultJobs />} />
           <Route path='/search-filter-jobs-list' element={<SearchResultJobsList />} />
         </Routes>
-
       </BrowserRouter>
     </div>
   )
