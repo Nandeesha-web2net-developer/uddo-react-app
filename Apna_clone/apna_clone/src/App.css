@@ -124,3 +124,13 @@
 .css-1u9des2-indicatorSeparator {
     display: none;
 }
+
+.css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root, .css-15v22id-MuiAccordionDetails-root{
+    padding: 0px !important;
+}
+.MuiPaper-root, .MuiPaper-root{
+    box-shadow: none !important;
+}
+.css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-nt424e-MuiPaper-root-MuiAccordion-root.Mui-expanded{
+    margin: 0px !important;
+}
