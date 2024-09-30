@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../imagse/logo.png'
-import { FaBriefcase, FaMobileAlt, FaTimesCircle} from 'react-icons/fa'
+import { FaBriefcase, FaMobileAlt, FaTimesCircle, FaChevronUp } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaChevronDown } from 'react-icons/fa';
@@ -9,29 +9,23 @@ import Dropdown from './Dropdown';
 
 const Navabar = () => {
 
-     const [acc, setAcc] = useState(-1)
+  const [accDrop, setAccDrop] = useState(-1);
 
-    const chnageAcc = (index_val) => {
-        if (index_val === acc) {
-            setAcc(-1)
-            return
-        }
-        setAcc(index_val)
-    }
+
 
   const [isDropdown, setDropdown] = useState(false);
 
   const toggleDropdownEnter = () => {
-    setDropdown(true);  // Open the dropdown when hovering
+    setDropdown(true);
   };
 
   const toggleDropdownLeave = () => {
-    setDropdown(false); // Close the dropdown when hover ends
+    setDropdown(false);
   };
 
   return (
     <>
-      <nav className='relative sm:hidden md:flex h-16 items-center justify-between w-full sm:px-4 md:px-10'>
+      <nav className='relative flex h-16 items-center justify-between w-full sm:px-4 md:px-10'>
         <div className='flex w-[40%]'>
 
           <Link to='/' className='navbar-logo pr-10 w-[33.333%]'>
@@ -65,18 +59,39 @@ const Navabar = () => {
         </div>
       </nav>
 
-
+      {/* 
       <nav className='bg-white w-[100%]'>
         <div>
           <div className='flex flex-row items-center justify-between px-4'>
             <Link to='/'><img src={logo} alt="" className='w-[140px]' /></Link>
-           <span className='text-[20px] text-darkviolet'><FaTimesCircle/></span> 
+            <span className='text-[20px] text-darkviolet'><FaTimesCircle /></span>
           </div>
           <div className='px-4 py-2'>
-            <NavLink to="/jobDetails" className='flex  items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>
-              <span><FaBriefcase /></span>   <div className='w-full flex items-center justify-between text-[14px]'><span>Jobs </span>    <FaChevronDown /></div>
-            </NavLink>
-
+            <div className='acc_faq' onClick={() => toggleAccordion(1)}>
+              <NavLink className='flex items-center gap-2 text-base font-medium text-dark hover:text-green'>
+                <FaBriefcase />
+                <div className='w-full flex justify-between text-[14px]'>
+                  <span>Jobs</span>
+                  {acc === 1 ? <FaChevronUp /> : <FaChevronDown />}
+                </div>
+              </NavLink>
+              {acc === 1 && (
+                <div className='px-4 py-2'>
+                  <div className='flex justify-between' onClick={() => toggleAccordionDrop(1)}>
+                    Job Type
+                    {accDrop === 1 ? <FaChevronUp /> : <FaChevronDown />}
+                  </div>
+                  {accDrop === 1 && (
+                    <div className='pl-4'>
+                      <p>Work from home</p>
+                      <p>Freelance</p>
+                      <p>Full-time</p>
+                      <p>Part-time</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
           <div className='px-4 py-2'>
             <NavLink to="/jobDetails" className='flex  items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>
@@ -89,7 +104,7 @@ const Navabar = () => {
             </NavLink>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
 
     </>

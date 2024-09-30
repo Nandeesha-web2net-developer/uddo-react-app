@@ -19,6 +19,7 @@ import InternationalJobList from './components/Pages/International_jobs/Internat
 import DownLoadApp from './components/Pages/DownLoadApp';
 import SearchResultJobsList from './components/Pages/HomeSeachResultsPage/SearchResultJobsList';
 import SearchResultJobs from './components/Pages/HomeSeachResultsPage/SearchResultJobs';
+import MultiLevelMainForm from './components/MultiLevelForm/MultiLevelMainForm';
 const App = () => {
   return (
     <div>
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='/download-uddo-app' element={<DownLoadApp />} />
           <Route path='/serch-results' element={<SearchResultJobs />} />
           <Route path='/search-filter-jobs-list' element={<SearchResultJobsList />} />
+          <Route path='/posting-new-job' element={<MultiLevelMainForm />} />
         </Routes>
       </BrowserRouter>
     </div>
