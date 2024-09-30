@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { StepperContext } from '../contexts/StepperContext'
-
+import {Button} from '@mui/material'
 const Account = () => {
   const { userData, setUserData } = useContext(StepperContext);
 
@@ -18,9 +18,9 @@ const Account = () => {
           <div className='my-10'>
             <label className='font-semibold'>Type of Job <span className=''>*</span> </label><br />
             <div className='mt-2 flex items-start gap-8'>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Part - Time</button>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Full - Time</button>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Both - (part tiem & full time)</button>
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Part - Time</Button>
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Full - Time</Button>
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Both - (part tiem & full time)</Button>
             </div>
 
           </div>
@@ -36,9 +36,9 @@ const Account = () => {
           <div className='my-10'>
             <label className='font-semibold'>Work location type  <span className=''>*</span> </label><br />
             <div className='mt-2 flex items-start gap-8'>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Work from Office</button>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Work from Home</button>
-              <button type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Remote</button>
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Work from Office</Button >
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Work from Home</Button >
+              <Button variant="outlined" type='button' className='border-[1px] border-grayw rounded-full px-4 py-1' >Remote</Button >
             </div>
 
             <div className='my-10'>

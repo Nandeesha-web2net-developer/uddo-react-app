@@ -20,6 +20,7 @@ import DownLoadApp from './components/Pages/DownLoadApp';
 import SearchResultJobsList from './components/Pages/HomeSeachResultsPage/SearchResultJobsList';
 import SearchResultJobs from './components/Pages/HomeSeachResultsPage/SearchResultJobs';
 import MultiLevelMainForm from './components/MultiLevelForm/MultiLevelMainForm';
+import Trial from './components/Trial';
 const App = () => {
   return (
     <div>
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/serch-results' element={<SearchResultJobs />} />
           <Route path='/search-filter-jobs-list' element={<SearchResultJobsList />} />
           <Route path='/posting-new-job' element={<MultiLevelMainForm />} />
+          <Route path='/trial' element={<Trial />} />
         </Routes>
       </BrowserRouter>
     </div>
