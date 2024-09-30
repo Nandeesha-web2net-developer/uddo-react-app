@@ -9,11 +9,11 @@ import { StepperContext } from './contexts/StepperContext';
 const MultiLevelMainForm = () => {
 
     const [currentStep, setCurrentStep] = useState(1);
-  const [userData, setUserData] = useState('');
-  const [finalData, setFinalData] = useState([]);
+    const [userData, setUserData] = useState('');
+    const [finalData, setFinalData] = useState([]);
 
     const steps = [
-        "Account Inforamation",
+        "Job Details",
         "Personal Details",
         "Complete"
     ];
@@ -40,46 +40,54 @@ const MultiLevelMainForm = () => {
     }
 
     return (
-        <div className='w-[80%] max-auto shadow-xl rounded-2xl pb-2 bg-white'>
-            {/*Stepeer*/}
-            <div className='container mt-5'>
-                <Stepper
-                    steps={steps}
-                    currentStep={currentStep}
-                />
+        <div className='bg-gray p-10'>
+            <h1 className='text-graynav text-[24px] font-semibold'>Post a New Job</h1>
+            <div className='w-full max-auto  rounded-2xl pb-2 '>
 
-                <div className='my-10 p-10'>
-                    <StepperContext.Provider
-                        value={{
-                           userData,
-                           setUserData,
-                           finalData, 
-                           setFinalData 
-                        }}>
+                {/*Stepeer*/}
+                <div className='container '>
 
-                        {displaySteps(currentStep)}
+                    <div className='bg-white mt-5 h-[80px] rounded-lg shadow-md'>
+                        <Stepper
+                            steps={steps}
+                            currentStep={currentStep}
+                        />
+                    </div>
 
-                    </StepperContext.Provider>
+                    <div className='my-10 p-10 bg-white rounded-lg shadow-xl'>
+                        <StepperContext.Provider
+                            value={{
+                                userData,
+                                setUserData,
+                                finalData,
+                                setFinalData
+                            }}>
+
+                            {displaySteps(currentStep)}
+
+                        </StepperContext.Provider>
+
+                    </div>
+
+
+
 
                 </div>
 
 
 
 
+                {/*Navigations Controls*/}
+
+                <StepperControl
+                    handleClick={handleClick}
+                    currentStep={currentStep}
+                    steps={steps}
+                />
+
             </div>
-
-
-
-
-            {/*Navigations Controls*/}
-
-            <StepperControl
-                handleClick={handleClick}
-                currentStep={currentStep}
-                steps={steps}
-            />
-
         </div>
+
     )
 }
 

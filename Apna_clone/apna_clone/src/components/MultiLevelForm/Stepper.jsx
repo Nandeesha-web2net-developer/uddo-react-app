@@ -50,19 +50,19 @@ const Stepper = ({ steps, currentStep }) => {
             {newSteps.map((step, index) => (
                 <div key={index} className={index !== newSteps.length - 1 ? "w-full flex items-center" : "flex items-center"}>
                     <div className='relative flex flex-col items-center text-lightgreen'>
-                        <div className={`rounded-full transition duration-500 ease-in-out border-lightgreen border-2 h-12 w-12 flex justify-center items-center ${step.selected ? "bg-lightgreen text-white font-bold border border-lightgreen" : ""}  `}>
-                            
-{step.completed ? (<span className='text-white font-bold text-xl'>&#10003;</span>) : (
-    index +1 
-)}
+                        <div className={`rounded-full transition duration-500 ease-in-out border-lightgreen border-2 h-6 w-6 flex justify-center items-center ${step.selected ? "bg-lightgreen text-white font-bold border border-lightgreen" : ""}  `}>
+
+                            {step.completed ? (<span className='text-white font-bold text-xl'>&#10003;</span>) : (
+                                index + 1
+                            )}
 
                         </div>
-                        <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-dark" : "text-grayw"}` }>
+                        <div className={`absolute top-0 text-center mt-8 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-dark" : "text-grayw"}`}>
                             {step.description}
                         </div>
                     </div>
                     <div className={`flex-auto border-t-2 transition duration-500 ease-in-out
-                        ${step.completed ? "border-lightgreen" : "border-light" }`}> </div>
+                        ${step.completed ? "border-lightgreen" : "border-light"}`}> </div>
                 </div>
             ))}
         </div>
