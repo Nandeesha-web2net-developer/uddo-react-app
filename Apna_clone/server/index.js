@@ -28,7 +28,7 @@ app.get('/jobDetails/:id', (req, res) => {
 });
 
 
-app.post("/postJob", (req, res) => {
+app.post("/posting-new-job", (req, res) => {
     UserModel.create(req.body)
         .then(result => res.json(result))
         .catch(err => res.status(500).json(err));

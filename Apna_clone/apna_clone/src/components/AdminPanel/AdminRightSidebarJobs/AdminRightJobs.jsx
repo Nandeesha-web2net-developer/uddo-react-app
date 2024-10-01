@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaBook, FaChevronDown, FaChevronRight, FaPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 
 const AdminRightJobs = () => {
@@ -25,10 +26,11 @@ const handlenewJob=()=>{
                             <div className='bg-light cursor-pointer text-[25px] text-lightgreen p-3 rounded-lg'>
                                 <FaPlus />
                             </div>
-                            <div>
+                          <Link to='/posting-new-job'>  <div>
                                 <h1 className='text-left font-semibold text-violet text-[20px] pb-1'>Start with blank form</h1>
                                 <p className='text-graynav text-left pr-6'>Use our blank form to create your job</p>
                             </div>
+                            </Link>
                          <FaChevronRight />
                         </div>
 
@@ -41,16 +43,17 @@ const handlenewJob=()=>{
 
                 <div className='flex flex-row gap-10 items-center justify-between'>
                     <div className='flex flex-col justify-center items-center'>
-                        <div className='bg-light cursor-pointer text-[25px] text-lightgreen p-3 rounded-lg'>
+                    <Link to='/posting-new-job'>          <div className='bg-light cursor-pointer text-[25px] text-lightgreen p-3 rounded-lg'>
                             <FaPlus />
                         </div>
+                        </Link>
                         <div>
                             <h1 className='text-center font-semibold text-violet text-[20px] mt-4 pb-1'>Start with blank form</h1>
                             <p className='text-graynav text-center'>Use our blank form to create your job and fill manually</p>
                         </div>
                         <div className='flex mt-10 px-6 cursor-pointer items-center justify-center border-[1px] border-green   gap-4 rounded-lg hover:bg-light py-2'>
 
-                            <span className='text-green text-[15px] font-semibold'>Start with blank form</span>
+                        <Link to='/posting-new-job'>            <span className='text-green text-[15px] font-semibold'>Start with blank form</span>       </Link>
                         </div>
                     </div>
 

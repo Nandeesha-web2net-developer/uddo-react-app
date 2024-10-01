@@ -8,7 +8,7 @@ export const popular = [
     {
         id:1,
         title: 'TRENDING AT#1',
-        path:'/freshers-job-list',
+        path:'/jobDetails?experience=Freshers',
         heading: 'Jobs for Freshers',
         img: search1,
         btn: 'View all',
@@ -17,7 +17,7 @@ export const popular = [
     {
         id:2,
         title: 'TRENDING AT#2',
-        path:'/workfromhome-job-list',
+        path:'/jobDetails?workmode=work from home',
         heading: 'Work from home jobs',
         img: search2,
         btn: 'View all',
@@ -26,7 +26,7 @@ export const popular = [
     {
         id:3,
         title: 'TRENDING AT#3',
-        path:'/part-time-job-list',
+        path:'/jobDetails?jobtype=part time',
         heading: 'Part time jobs',
         img: search3,
         btn: 'View all',
@@ -44,7 +44,7 @@ export const popular = [
     {
         id:5,
         title: 'TRENDING AT#5',
-        path:'/freshers-job-list',
+        path:'/international-job-list',
         heading: 'International Jobs',
         img: search5,
         btn: 'View all',

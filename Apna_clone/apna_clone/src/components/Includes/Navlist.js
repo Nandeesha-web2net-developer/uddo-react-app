@@ -17,17 +17,17 @@ export const TypesofJobs =[
     {
         id:1, 
         title:'Work From Home Jobs',
-        path:'/workfromhome-job-list'
+        path:'jobDetails?workmode=work from home'
     },
     {
         id:2, 
         title:'PartTime Jobs',
-        path:'/part-time-job-list'
+        path:'/jobDetails?jobtype=part time'
     },
     {
         id:3, 
         title:'Freshers Jobs',
-        path:'/freshers-job-list'
+        path:'/jobDetails?experience=Freshers'
     },
     {
         id:4, 
@@ -37,7 +37,7 @@ export const TypesofJobs =[
     {
         id:5, 
         title:'Full Time Jobs',
-        path:'/full-time-jobs'
+        path:'/jobDetails?jobtype=full time'
     },
     {
         id:6, 

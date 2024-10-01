@@ -134,3 +134,6 @@
 .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-nt424e-MuiPaper-root-MuiAccordion-root.Mui-expanded{
     margin: 0px !important;
 }
+.css-nt424e-MuiPaper-root-MuiAccordion-root::before{
+    background-color:white !important;
+}

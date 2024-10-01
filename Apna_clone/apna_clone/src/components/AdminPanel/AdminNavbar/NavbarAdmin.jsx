@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom';
-import { FaUser, FaDatabase, FaQuestionCircle, FaSignOutAlt, FaWhatsapp, FaChartArea, FaCalendar } from 'react-icons/fa'
+import { FaUser, FaDatabase, FaQuestionCircle, FaSignOutAlt, FaWhatsapp, FaCalendar } from 'react-icons/fa'
 
 const NavbarAdmin = ({ clickevent }) => {
     const [profile, setProfile] = useState(false);
@@ -14,32 +14,34 @@ const NavbarAdmin = ({ clickevent }) => {
         setSupport(!support)
     }
 
-    // Function to close dropdown when clicking outside
-    const handleClickOutside = (event) => {
-        if (!event.target.closest('.profile-dropdown') && profile) {
-            setProfile(false);
-        }
-    };
-    // Function to close dropdown when clicking outside
-    const handleSupportOutside = (event) => {
-        if (!event.target.closest('.profile-dropdown') && support) {
-            setSupport(false);
-        }
-    };
+    // // Function to close dropdown when clicking outside
+    // const handleClickOutside = (event) => {
+    //     if (!event.target.closest('.profile-dropdown') && profile) {
+    //         setProfile(false);
+    //     }
+    // };
+    // // Function to close dropdown when clicking outside
+    // const handleSupportOutside = (event) => {
+    //     if (!event.target.closest('.profile-dropdown') && support) {
+    //         setSupport(false);
+    //     }
+    // };
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [profile]);
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', handleClickOutside);
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutside);
+    //     };
+    // }, [profile]);
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleSupportOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleSupportOutside);
-        };
-    }, [support]);
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', handleSupportOutside);
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleSupportOutside);
+    //     };
+    // }, [support]);
+
+    
 
     return (
         <>
@@ -120,9 +122,10 @@ const NavbarAdmin = ({ clickevent }) => {
                                 <div className='text-grayw hover:bg-light px-2 py-1 rounded-md flex gap-4 items-center'>
                                     <FaUser /> View Profile
                                 </div>
-                                <div className='text-[#8a1313] mt-3 hover:bg-[#ffafaf5f] px-2 py-1 flex gap-4 items-center'>
+                                <Link to='/'>       <div className='text-[#8a1313] mt-3 hover:bg-[#ffafaf5f] cursor-pointer px-2 py-1 flex gap-4 items-center'>
                                     <FaSignOutAlt /> Sign out
                                 </div>
+                                </Link>
                             </div>
                         )}
                     </div>

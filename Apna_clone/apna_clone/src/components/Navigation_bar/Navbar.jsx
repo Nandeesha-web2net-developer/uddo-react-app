@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../imagse/logo.png'
-import { FaBriefcase, FaMobileAlt, FaTimesCircle, FaChevronUp } from 'react-icons/fa'
+import { FaBriefcase, FaMobileAlt, FaTimesCircle, FaChevronUp, FaMobile, FaDownload, FaUserAlt } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { FaChevronDown } from 'react-icons/fa';
 import Dropdown from './Dropdown';
 import { TypesofJobs } from '../Includes/Navlist';
-
 import Accordian from '@mui/material/Accordion'
 import AccordianSummary from '@mui/material/AccordionSummary'
 import AccordianDetails from '@mui/material/AccordionDetails'
 import ExpandMoreIcom from '@mui/icons-material/ExpandMore'
+import CloseIcon from '@mui/icons-material/Close';
+
 import ExpandMore from '@mui/icons-material/ExpandMore'
 
 const Navabar = () => {
 
   const [accDrop, setAccDrop] = useState(-1);
+  const [openMenu, setOpenMenu] = useState(false);
   const [isDropdown, setDropdown] = useState(false);
+
+
+  const openMobile = () => {
+    setOpenMenu(true)
+  }
+  const clsoseMobile = () => {
+    setOpenMenu(false)
+  }
 
   const toggleDropdownEnter = () => {
     setDropdown(true);
@@ -64,99 +74,114 @@ const Navabar = () => {
       </nav>
       {/* Mobile menu */}
 
-      <div className='md:hidden sm:block absolute bg-white px-4 pb-10 overflow-y-auto'>
-        <img src={logo} alt="" className='w-[80px]' />
+      <div className='md:hidden sm:block w-[full] relative bg-white px-4 overflow-y-scroll'>
+        <div className='flex items-center gap-4'>
+          <div className='flex w-[25px] gap-[5px] flex-col' onClick={openMobile}>
+            <span className='h-[2px] rounded-full bg-violet'></span>
+            <span className='h-[2px] rounded-full bg-violet'></span>
+            <span className='h-[2px] rounded-full bg-violet'></span>
+          </div>   <img src={logo} alt="" className='w-[80px]' /> </div>
+        {openMenu ? (<span className='absolute flex items-center justify-center right-[10px] top-[15px] z-[100] bg-grayw text-white w-[30px] h-[30px] rounded-full' onClick={clsoseMobile}><CloseIcon /></span>
+        ) : ''
+        }
+      </div>
+
+      {openMenu ? (<div className='shadow-xl overflow-x-hidden max-w-[80%] max-h-[600px] overflow-y-scroll absolute top-0 w-[80%] bg-white z-[2000] pt-6 pb-6 pr-6 pl-5'>
+
         <Accordian>
           <AccordianSummary expandIcon={<ExpandMore />} >
-       <span className='flex items-center gap-4 z-[1000]'>   <FaBriefcase/> Jobs </span> 
+            <span className='flex items-center gap-4 z-[1000]'>
+              <FaBriefcase /> Jobs
+            </span>
           </AccordianSummary>
           <AccordianDetails>
-            <Accordian>
-              <AccordianSummary expandIcon={<ExpandMore />} >
-                Job By Type
-              </AccordianSummary>
-              <AccordianDetails>
+            <div className=" "> {/* Set max-height and enable scroll */}
+              <Accordian>
+                <AccordianSummary expandIcon={<ExpandMore />} >
+                  Job By Type
+                </AccordianSummary>
+                <AccordianDetails>
+                  <div className='flex flex-col gap-3'>
+                    {TypesofJobs.map((item, index) => (
+                      <Link to={item.path} key={index}>{item.title}</Link>
+                    ))}
+                  </div>
+                </AccordianDetails>
+              </Accordian>
 
-                <div className='flex flex-col gap-3'>
-                  {TypesofJobs.map((item, index) => (
-                    <Link to={item.path} >{item.title}</Link>
-                  ))}
-                </div>
+              <Accordian>
+                <AccordianSummary expandIcon={<ExpandMore />} >
+                  Job By Cities
+                </AccordianSummary>
+                <AccordianDetails>
+                  <div className='flex flex-col gap-3'>
+                    <Link to='/'>Jobs Agra</Link>
+                    <Link to='/'>Jobs Bangalore</Link>
+                    <Link to='/'>Jobs Mumbai</Link>
+                    <Link to='/'>All Other Cities</Link>
+                  </div>
+                </AccordianDetails>
+              </Accordian>
 
-              </AccordianDetails>
-            </Accordian>
+              <Accordian>
+                <AccordianSummary expandIcon={<ExpandMore />} >
+                  Job By Department
+                </AccordianSummary>
+                <AccordianDetails>
+                  <div className='flex flex-col gap-3'>
+                    <Link to='/'>Sales</Link>
+                    <Link to='/'>Admin & Back Office</Link>
+                    <Link to='/'>Customer Support</Link>
+                    <Link to='/'>Marketing</Link>
+                    <Link to='/'>Restaurant</Link>
+                    <Link to='/'>All Other Department</Link>
+                  </div>
+                </AccordianDetails>
+              </Accordian>
 
+              <Accordian>
+                <AccordianSummary expandIcon={<ExpandMore />} >
+                  Job By Company
+                </AccordianSummary>
+                <AccordianDetails>
+                  <div className='flex flex-col gap-3'>
+                    <Link to='/'>Swiggy</Link>
+                    <Link to='/'>Zomoto</Link>
+                    <Link to='/'>Aaruhi Groups</Link>
+                    <Link to='/'>All other Companies</Link>
+                  </div>
+                </AccordianDetails>
+              </Accordian>
 
-            <Accordian>
-              <AccordianSummary expandIcon={<ExpandMore />} >
-                Job By Cities
-              </AccordianSummary>
-              <AccordianDetails>
-
-                <div className='flex flex-col gap-3'>
-
-                  <Link to='/' >Jobs Agra</Link>
-                  <Link to='/' >Jobs Bangalore</Link>
-                  <Link to='/' >Jobs Mumbai</Link>
-                  <Link to='/' >All Other Cities</Link>
-
-                </div>
-
-              </AccordianDetails>
-            </Accordian>
-
-            <Accordian>
-              <AccordianSummary expandIcon={<ExpandMore />} >
-                Job By Department
-              </AccordianSummary>
-              <AccordianDetails>
-
-                <div className='flex flex-col gap-3'>
-                  <Link to='/'>Sales</Link>
-                  <Link to='/'>Admin & Back Office</Link>
-                  <Link to='/'>Customer Support</Link>
-                  <Link to='/'>Marketing</Link>
-                  <Link to='/'>Restaurant</Link>
-                  <Link to='/'>All Other Department</Link>
-                </div>
-
-              </AccordianDetails>
-            </Accordian>
-
-            <Accordian>
-              <AccordianSummary expandIcon={<ExpandMore />} >
-                Job By Company
-              </AccordianSummary>
-              <AccordianDetails>
-
-                <div className='flex flex-col gap-3'>
-                  <Link to='/'>Swiggy</Link>
-                  <Link to='/'>Zomoto</Link>
-                  <Link to='/'>Aaruhi Groups</Link>
-                  <Link to='/'>All other Companies</Link>
-                </div>
-
-              </AccordianDetails>
-            </Accordian>
-
-            <Accordian>
-              <AccordianSummary expandIcon={<ExpandMore />} >
-                Job By Qualification
-              </AccordianSummary>
-              <AccordianDetails>
-
-                <div className='flex flex-col gap-3'>
-                  <Link to='/'>10th Pass Jobs</Link>
-                  <Link to='/'>12th Pass Jobs</Link>
-                </div>
-              </AccordianDetails>
-            </Accordian>
-
-
-
+              <Accordian>
+                <AccordianSummary expandIcon={<ExpandMore />} >
+                  Job By Qualification
+                </AccordianSummary>
+                <AccordianDetails>
+                  <div className='flex flex-col gap-3'>
+                    <Link to='/'>10th Pass Jobs</Link>
+                    <Link to='/'>12th Pass Jobs</Link>
+                  </div>
+                </AccordianDetails>
+              </Accordian>
+            </div> {/* End of scrollable section */}
           </AccordianDetails>
         </Accordian>
-      </div>
+
+        <div className='bg-light h-[2px] w-[full] my-6'></div>
+        <span className='flex items-center gap-4 py-4 z-[1000]'>
+          <FaMobileAlt /> Contact Us
+        </span>
+        <span className='flex items-center gap-4 py-4 z-[1000]'>
+          <FaDownload /> Download Uddo App Now
+        </span>
+        <span className='flex items-center gap-4 py-4 z-[1000]'>
+          <FaUserAlt /> Login
+        </span>
+
+      </div>) : ''}
+
+
 
     </>
   )

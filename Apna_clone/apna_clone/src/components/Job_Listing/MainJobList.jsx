@@ -5,17 +5,68 @@ import fulltime from '../../imagse/fulltime.png'
 import experience from '../../imagse/experience.png'
 import englishlevel from '../../imagse/english.png'
 import { FaHome, FaMoneyBillAlt, FaChevronRight } from 'react-icons/fa'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const MainJobList = () => {
     const [job, setJob] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1)
     const recordsPerPage = 3;
+
+    // Get the current location and query parameters
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // Extract the query parameter (experience filter)
+    const queryParams = new URLSearchParams(location.search);
+    // const experienceFilter = queryParams.get('experience') || 'all';  // Default to 'all'
+
+    const experienceFilter = queryParams.get('experience');  // For Freshers
+    const jobTypeFilter = queryParams.get('jobtype');        // For Part-time
+    const workfromhome = queryParams.get('workmode');        // For Part-time
+
+    // // Filter jobs based on the query parameter (e.g., 'Freshers')
+    // const filteredJobs = experienceFilter === 'Freshers'
+    //     ? job.filter(item => item.experience.toLowerCase() === 'freshers')
+    //     : job;  // If no filter, show all jobs
+
+
+
+    // const filteredJobs = job.filter(item => {
+    //     // Convert all job experience and category fields to lowercase for case-insensitive comparison
+    //     const experience = item.experience.trim().toLowerCase();
+    //     const jobtype = item.jobtype.trim().toLowerCase(); // Assuming you have a jobType field like 'part-time', 'full-time', etc.
+
+    //     // Filters array, you can modify this array based on the selected filters
+    //     const selectedFilters = ['freshers', 'part-time']; // Add more categories as required
+
+    //     // Check if the job matches any of the selected filters
+    //     return selectedFilters.includes(experience) || selectedFilters.includes(jobtype);
+    // });
+
+
+    // Filter jobs based on the query parameter (either experience or jobtype)
+    const filteredJobs = job.filter(item => {
+        if (experienceFilter) {
+            // Filter by experience (e.g., 'Freshers')
+            return item.experience.trim().toLowerCase() === experienceFilter.trim().toLowerCase();
+        } else if (jobTypeFilter) {
+            // Filter by job type (e.g., 'part-time')
+            return item.jobtype.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === jobTypeFilter.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase();
+        }
+        else if (workfromhome) {
+            return item.workmode.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === workfromhome.trim().toLowerCase();
+        }
+        // If no filters applied, return all jobs
+        return true;
+    });
+
+
+
     const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
-    const records = job.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(job.length / recordsPerPage)
+    const records = filteredJobs.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(filteredJobs.length / recordsPerPage)
 
     const numbers = [...Array(npage + 1).keys()].slice(1)
 

@@ -28,6 +28,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CandidateReview from '../Candidate_reviews/CandidateReview';
 import axios from 'axios'
 import Select from 'react-select'
+import MobileNavigation from '../Navigation_bar/MobileNavigation';
 
 const Home = () => {
     const [job, setJob] = useState([])
@@ -131,9 +132,10 @@ const Home = () => {
 
     return (
         <div>
-            <div className={header ? 'bg-white fixed top-0 border-graylight border-b-2 z-50' : 'bg-gray'}>
+            <div className={header ? 'bg-white sticky top-0 border-graylight border-b-2 z-50' : 'bg-gray'}>
                 <Navbar />
             </div>
+        
 
             {/* Banner */}
             <div className='h-screen bg-gray pt-[60px] sm:px-4 md:px-10 relative'>
