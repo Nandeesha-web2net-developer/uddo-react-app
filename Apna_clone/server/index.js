@@ -27,7 +27,6 @@ app.get('/jobDetails/:id', (req, res) => {
         .catch(err => res.status(500).json({ error: 'Error fetching job details', details: err }));
 });
 
-
 app.post("/posting-new-job", (req, res) => {
     UserModel.create(req.body)
         .then(result => res.json(result))
@@ -35,6 +34,6 @@ app.post("/posting-new-job", (req, res) => {
 });
 
 app.listen(5000, () => {
-    console.log("Server is Running on port 3002");
+    console.log("Server is Running on port 5000");
 });
 

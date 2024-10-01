@@ -8,9 +8,6 @@ import JobDetails from './components/AdminPanel/JobDetails';
 import JobDetailSection from './components/JobDetail_section/JobDetailSection';
 import Admindashboard from './components/AdminPanel/AdminDashboard/Admindashboard';
 import Jobsearch from './components/JobSearch/Jobsearch';
-import FreshersJobList from './components/Pages/FreshersJobs/FreshersJobList';
-import WorkfromhomeJobList from './components/Pages/WorkFromHome/WorkfromhomeJobList';
-import PartTimeJobList from './components/Pages/PartTimeJobs/PartTimeJobList';
 import CityJobsList from './components/Pages/CityJobs/CityJobsList';
 import ScrollTop from './components/ScrollTopComp/ScrollTop';
 import ContactUs from './components/Pages/ContactUs';
@@ -34,9 +31,6 @@ const App = () => {
           <Route path='/jobdetail/:id' element={<JobDetailSection />} />
           <Route path='/admindashboard' element={<Admindashboard />} />
           <Route path='/job-search' element={<Jobsearch />} />
-          <Route path='/freshers-job-list' element={<FreshersJobList />} />
-          <Route path='/workfromhome-job-list' element={<WorkfromhomeJobList />} />
-          <Route path='/part-time-job-list' element={<PartTimeJobList />} />
           <Route path='/city-job-list' element={<CityJobsList />} />
           <Route path='/international-job-list' element={<InternationalJobList />} />
           <Route path='/contact-us' element={<ContactUs />} />
