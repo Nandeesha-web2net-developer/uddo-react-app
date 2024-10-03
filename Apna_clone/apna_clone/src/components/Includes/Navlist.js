@@ -32,7 +32,7 @@ export const TypesofJobs =[
     {
         id:4, 
         title:'Jobs For Women',
-        path:'/jobs-for-women'
+        path:'/jobDetails?gender=female only'
     },
     {
         id:5, 
@@ -42,7 +42,7 @@ export const TypesofJobs =[
     {
         id:6, 
         title:'Night Shift Jobs',
-        path:'/night-shift-jobs'
+        path:'/jobDetails?shift=Night Shift'
     },
     {
         id:7, 
@@ -55,18 +55,18 @@ export const TypesofJobs =[
 export const Cityjobs =[
     {
         id:2, 
-        title:'Jobs In Bangalore',
-        path:'/city-job-list'
+        title:'Jobs In Agra',
+        path:'/jobDetails?location=Agra'
     },
     {
         id:3, 
         title:'Jobs In Bangalore',
-        path:'/city-job-list'
+        path:'/jobDetails?location=Bangalore'
     },
     {
         id:4, 
         title:'Jobs In Bangalore',
-        path:'/jobs-in-bangalore'
+        path:'/jobDetails?location=Bangalore'
     },
     {
         id:5, 

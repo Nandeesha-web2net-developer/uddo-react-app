@@ -3,7 +3,6 @@ import './App.css'
 import Home from './components/Pages/Home';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Admin_login from './components/AdminPanel/Admin_login';
-import Postjob from './components/AdminPanel/Postjob';
 import JobDetails from './components/AdminPanel/JobDetails';
 import JobDetailSection from './components/JobDetail_section/JobDetailSection';
 import Admindashboard from './components/AdminPanel/AdminDashboard/Admindashboard';
@@ -18,6 +17,8 @@ import SearchResultJobsList from './components/Pages/HomeSeachResultsPage/Search
 import SearchResultJobs from './components/Pages/HomeSeachResultsPage/SearchResultJobs';
 import MultiLevelMainForm from './components/MultiLevelForm/MultiLevelMainForm';
 import Trial from './components/Trial';
+import CandidateLogin from './components/Candidate_Area/CandidateLogin';
+import CandidateJobList from './components/Candidate_Area/CandidateJobList';
 const App = () => {
   return (
     <div>
@@ -26,7 +27,6 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/adminlogin' element={<Admin_login />} />
-          <Route path='/postJob' element={<Postjob />} />
           <Route path='/jobDetails' element={<JobDetails />} />
           <Route path='/jobdetail/:id' element={<JobDetailSection />} />
           <Route path='/admindashboard' element={<Admindashboard />} />
@@ -40,6 +40,8 @@ const App = () => {
           <Route path='/search-filter-jobs-list' element={<SearchResultJobsList />} />
           <Route path='/posting-new-job' element={<MultiLevelMainForm />} />
           <Route path='/trial' element={<Trial />} />
+          <Route path='/candidatelogin' element={<CandidateLogin />} />
+          <Route path='/candidate/jobs' element={<CandidateJobList />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -35,7 +35,7 @@ export const popular = [
     {
         id:4,
         title: 'TRENDING AT#4',
-        path:'/freshers-job-list',
+        path:'/jobDetails?gender=female only',
         heading: 'Jobs for Women',
         img: search4,
         btn: 'View all',

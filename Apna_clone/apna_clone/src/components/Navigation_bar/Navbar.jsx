@@ -20,6 +20,7 @@ const Navabar = () => {
   const [accDrop, setAccDrop] = useState(-1);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDropdown, setDropdown] = useState(false);
+  const [isDropdownLogin, setDropdownLogin] = useState(false);
 
 
   const openMobile = () => {
@@ -37,6 +38,14 @@ const Navabar = () => {
     setDropdown(false);
   };
 
+  const loginDropdownEnter = () => {
+    setDropdownLogin(true);
+  };
+
+  const loginDropdownLeave = () => {
+    setDropdownLogin(false);
+  };
+
   return (
     <>
       <nav className='relative md:flex h-16 items-center justify-between w-full sm:hidden sm:px-4 md:px-10'>
@@ -48,7 +57,7 @@ const Navabar = () => {
 
           <div className='flex items-center  space-x-9 w-[50%]' onMouseLeave={toggleDropdownLeave}>
 
-            <div className='relative' onMouseEnter={toggleDropdownEnter} >
+            <div className='relative' onMouseEnter={toggleDropdownEnter} onMouseLeave={loginDropdownLeave} >
               <NavLink to="/jobDetails" className='flex items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>
                 Jobs <span className='text-[14px]'> <FaChevronDown /></span>
               </NavLink>
@@ -65,9 +74,19 @@ const Navabar = () => {
           </div>
         </div>
         <div className='w-[60%] flex justify-end'>
-          <a href="" className='text-base px-5  text-dark font-medium font-family-roboto flex items-center'><FaMobileAlt className='text-green' /><span className='pl-1'>Download App</span></a>
+          <Link to='/download-Uddo-app' className='text-base px-5  text-dark font-medium font-family-roboto flex items-center'><FaMobileAlt className='text-green' /><span className='pl-1'>Download App</span></Link>
           <a href="" className='text-base px-5 text-dark font-medium font-family-roboto flex items-center'>English <span className='pl-1'><FaChevronDown className='text-green' /></span></a>
-          <Link to='/adminlogin' className='text-base px-5 text-dark font-medium font-family-roboto flex items-center'><FaUser className='text-green' /><span className='pl-1' >Login</span></Link>
+
+          <div className='flex items-center relative' onMouseEnter={loginDropdownEnter} onMouseLeave={loginDropdownLeave}>
+            <Link to='/adminlogin' className='text-base px-5 text-dark font-medium justify-center font-family-roboto flex items-center'><FaUser className='text-green' /><span className='pl-1' >Login</span></Link>
+            {isDropdownLogin ? (<div className='w-[200px] px-5 search-box rounded-md bg-white absolute top-[40px] py-4 left-0 z-[200]'>
+
+              <Link to='/adminlogin' className='text-base pb-4 text-dark font-medium justify-start font-family-roboto flex items-center'><FaUser className='text-green' /><span className='pl-1' >Employer Login</span></Link>
+              <Link to='/candidatelogin' className='text-base text-dark font-medium justify-start font-family-roboto flex items-center'><FaUser className='text-green' /><span className='pl-1' >Candidate Login</span></Link>
+            </div>) : ''}
+
+          </div>
+
           <a href="" className='text-base px-8 py-1  ml-4 bg-[#03ACEE] border-2 font-family-roboto border-[#03ACEE] font-medium
            rounded-full text-white hover:bg-white hover:text-[#03ACEE] flex items-center'>Hire local staff <span className='pl-3'><FaExternalLinkAlt /></span></a>
         </div>

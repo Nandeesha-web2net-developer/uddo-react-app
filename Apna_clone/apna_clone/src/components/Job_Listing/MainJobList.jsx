@@ -24,6 +24,10 @@ const MainJobList = () => {
     const experienceFilter = queryParams.get('experience');  // For Freshers
     const jobTypeFilter = queryParams.get('jobtype');        // For Part-time
     const workfromhome = queryParams.get('workmode');        // For Part-time
+    const gender = queryParams.get('gender');        // For Part-time
+    const shift = queryParams.get('shift');        // For Part-time
+    const qualification = queryParams.get('qualification');  
+    const locationcity = queryParams.get('location');       // For Part-time
 
     // // Filter jobs based on the query parameter (e.g., 'Freshers')
     // const filteredJobs = experienceFilter === 'Freshers'
@@ -55,7 +59,19 @@ const MainJobList = () => {
             return item.jobtype.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === jobTypeFilter.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase();
         }
         else if (workfromhome) {
-            return item.workmode.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === workfromhome.trim().toLowerCase();
+            return item.workmode.trim().toLowerCase() === workfromhome.trim().toLowerCase();
+        }
+        else if (gender) {
+            return item.gender.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === gender.trim().toLowerCase();
+        }
+        else if (shift) {
+            return item.shift.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === shift.trim().toLowerCase();
+        }
+        else if (qualification) {
+            return item.qualification.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === qualification.trim().toLowerCase();
+        }
+        else if (locationcity) {
+            return item.location.replace(/[^a-zA-Z0-9 ]/g, "").trim().toLowerCase() === locationcity.trim().toLowerCase();
         }
         // If no filters applied, return all jobs
         return true;

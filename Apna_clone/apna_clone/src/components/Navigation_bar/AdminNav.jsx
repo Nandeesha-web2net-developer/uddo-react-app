@@ -11,7 +11,7 @@ const AdminNav = () => {
       <Link to='/' className='navbar-logo pr-10 w-4/12'>
         <img src={logo} alt=""/>
       </Link>
-      <Link to='/postJob' className='text-base px-5 text-dark font-medium font-family-roboto flex items-center'><FaUser className='text-green'/><span className='pl-1' >Post Job</span></Link>
+      <Link className='text-base px-5 text-dark font-medium font-family-roboto flex items-center'><FaUser className='text-green'/><span className='pl-1' >Employer Login</span></Link>
     </div>
 
   </nav>

@@ -9,13 +9,13 @@ import { Link, useLocation } from 'react-router-dom'
 
 const SearchResultJobs = () => {
 
-    const location = useLocation(); // to retrieve the search filters
-    const { jobTitle, city } = location.state || {};
+    const location1 = useLocation(); // to retrieve the search filters
+    const { jobTitle, location } = location1.state || {};
     const [job, setJob] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1)
     const recordsPerPage = 3;
-    const fresherJobs = job.filter(item => item.jobtitle.trim().toLowerCase() === jobTitle.trim().toLowerCase() && item.city.trim().toLowerCase() === city.trim().toLowerCase())
+    const fresherJobs = job.filter(item => item.jobtitle.trim().toLowerCase() === jobTitle.trim().toLowerCase() && item.location.trim().toLowerCase() === location.trim().toLowerCase())
     const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
     const records = fresherJobs.slice(firstIndex, lastIndex)

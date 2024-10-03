@@ -24,6 +24,7 @@ import {
     FaTimesCircle,
 } from 'react-icons/fa'
 import Buttons from '../Buttons/Buttons'
+import CandidateReview from '../Candidate_reviews/CandidateReview'
 
 const JobDetailSection = () => {
 
@@ -55,9 +56,9 @@ const JobDetailSection = () => {
 
             <div className={popModel ? 'fixed bg-[#00000080] z-[400] flex items-center justify-center w-full h-full' : 'hidden'}>
                 <div className=' flex w-[100%] justify-center items-center flex-col shadow-e3'>
-                    
+
                     <div className='bg-white relative  login-box  w-[35%] mt-10 p-10 rounded'>
-                    <div onClick={popClose} className='cursor-pointer absolute top-[5px] text-grayw text-[25px] right-[5px]'><FaTimesCircle /></div>
+                        <div onClick={popClose} className='cursor-pointer absolute top-[5px] text-grayw text-[25px] right-[5px]'><FaTimesCircle /></div>
                         <h1 className='text-login text-[26px] font-[600]'>Let's get started</h1>
                         <p className='text-login text-[15px] mb-[1.5rem]'>Hire top talent faster with uddo</p>
                         <form action="">
@@ -72,7 +73,7 @@ const JobDetailSection = () => {
                         </form>
 
                     </div>
-             
+
                 </div>
             </div>
 
@@ -98,17 +99,17 @@ const JobDetailSection = () => {
                                         </div>
                                     </div>
                                     <h1 className='text-grayw flex items-center gap-2 pt-4' > <FaHome /> {jobDetails.workmode} </h1>
-                                    <h1 className='text-grayw flex items-center gap-2 pt-3 pb-3'><FaMoneyBillAlt /> {jobDetails.salary}</h1>
+                                    <h1 className='text-grayw flex items-center gap-2 pt-3 pb-3'><FaMoneyBillAlt /> ₹{jobDetails.salaryFrom} - ₹{jobDetails.salaryTo} / Month</h1>
 
                                     <div className="rounded-lg bg-[#edebee80] px-[16px] py-[12px]">
                                         <div className="md:grid md:grid-cols-3">
                                             <div className="flex justify-between md:flex-col md:gap-[8px]">
                                                 <p className="m-0 text-medium text-[#8C8594]">Fixed</p>
-                                                <p className="m-0 py-1 flex items-center text-xs font-semibold text-[#8C8594]">₹30000 - ₹149998</p></div>
+                                                <p className="m-0 py-1 flex items-center text-xs font-semibold text-[#8C8594]">₹{jobDetails.salaryFrom} - ₹{jobDetails.salaryTo}</p></div>
                                             <div className="my-[12px] h-[1px] w-full bg-[#8C8594] opacity-20 md:hidden"></div>
                                             <div className="flex justify-between md:flex-col md:gap-[8px]">
                                                 <p className="m-0 text-medium text-[#8C8594]">Earning Potential</p>
-                                                <p className="m-0 text-xs font-semibold text-[#8C8594]">₹149,998</p>
+                                                <p className="m-0 text-xs font-semibold text-[#8C8594]">₹{jobDetails.salaryTo}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +177,7 @@ const JobDetailSection = () => {
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className="m-0 text-sm leading-[20px] text-[#8C8594] md:leading-[24px]">Department</p>
-                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">Software Engineering</p>
+                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">{jobDetails.jobrole}</p>
                                                 </div>
                                             </div>
                                             <div className="flex w-full space-x-[12px]">
@@ -185,7 +186,7 @@ const JobDetailSection = () => {
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className="m-0 text-sm leading-[20px] text-[#8C8594] md:leading-[24px]">Role / Category</p>
-                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">Software Development</p>
+                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">{jobDetails.jobrole}</p>
                                                 </div>
                                             </div>
                                             <div className="flex w-full space-x-[12px]">
@@ -194,7 +195,7 @@ const JobDetailSection = () => {
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className="m-0 text-sm leading-[20px] text-[#8C8594] md:leading-[24px]">Employment type</p>
-                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">Full Time</p>
+                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">{jobDetails.jobtype}</p>
                                                 </div>
                                             </div>
                                             <div className="flex w-full space-x-[12px]">
@@ -203,7 +204,7 @@ const JobDetailSection = () => {
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className="m-0 text-sm leading-[20px] text-[#8C8594] md:leading-[24px]">Shift</p>
-                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">Day Shift</p>
+                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">{jobDetails.shift}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -221,7 +222,7 @@ const JobDetailSection = () => {
                                                 </div>
                                                 <div className="flex-1">
                                                     <p className="m-0 text-sm leading-[20px] text-[#8C8594] md:leading-[24px]">Experience</p>
-                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">Any experience</p>
+                                                    <p className="m-0 text-sm leading-[20px] text-[#190A28] md:leading-[24px]">{jobDetails.experience}</p>
                                                 </div>
                                             </div>
                                             <div className="flex w-full space-x-[12px]">
@@ -325,6 +326,7 @@ const JobDetailSection = () => {
 
 
                 <div className='w-full bg-graylight h-[2px]'></div>
+                <div><CandidateReview /> </div>
                 <Loadmore />
                 <Footer />
 

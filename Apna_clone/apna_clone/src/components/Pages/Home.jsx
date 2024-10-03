@@ -28,7 +28,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CandidateReview from '../Candidate_reviews/CandidateReview';
 import axios from 'axios'
 import Select from 'react-select'
-import MobileNavigation from '../Navigation_bar/MobileNavigation';
+
 
 const Home = () => {
     const [job, setJob] = useState([])
@@ -104,7 +104,7 @@ const Home = () => {
     }, [])
 
     const jobOptions = job.map(job => ({ value: job.id, label: job.jobtitle }));
-    const jobLocation = job.map(job => ({ value: job.id, label: job.city }));
+    const jobLocation = job.map(job => ({ value: job.id, label: job.location }));
 
     //Search filter
     const [selectOption, setSeletOption] = useState(null);
@@ -124,7 +124,7 @@ const Home = () => {
             navigate('/search-filter-jobs-list', {
                 state: {
                     jobTitle: selectOption.label,
-                    city: selectOptionCity.label
+                    location: selectOptionCity.label
                 }
             });
         }
@@ -135,7 +135,7 @@ const Home = () => {
             <div className={header ? 'bg-white sticky top-0 border-graylight border-b-2 z-50' : 'bg-gray'}>
                 <Navbar />
             </div>
-        
+
 
             {/* Banner */}
             <div className='h-screen bg-gray pt-[60px] sm:px-4 md:px-10 relative'>
@@ -272,7 +272,7 @@ const Home = () => {
                     <div className=' grid sm:grid-cols-2 md:grid-cols-6 gap-2 px-4  mt-12 pb-10' >
                         {qualification.map((item) => (
                             <div key={item.id}>
-                                <Qualification img={item.img} title={item.title} desc={item.desc} />
+                                <Qualification img={item.img} path={item.path} title={item.title} desc={item.desc} />
                             </div>
                         ))}
                     </div>

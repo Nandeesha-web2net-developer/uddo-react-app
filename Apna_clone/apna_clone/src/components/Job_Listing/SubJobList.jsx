@@ -30,7 +30,7 @@ const SubJobList = () => {
         <div className='flex flex-col justify-center w-[100%] '>
 
             {findind.map((item) => (
-                <Link to={`/jobdetail/${item._id}`} className='w-[100%]'>
+                <Link target="_blank" to={`/jobdetail/${item._id}`} className='w-[100%]'>
                     <div key={item._id} className='cursor-pointer bg-white my-2 w-full '>
 
                         <div className='flex items-center justify-between gap-3'>

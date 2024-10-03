@@ -1,14 +1,14 @@
 export const findJobs = [
     {
         id: 1,
-        title: 'Jobs in Bangalore',
-        path: '/jobs-in-bangalore',
+        title: 'Jobs in Agra',
+        path: '/jobDetails?location=Agra',
     },
 
     {
         id: 2,
         title: 'Jobs in Bangalore',
-        path: '/jobs-in-bangalore',
+        path: '/jobDetails?location=Bangalore',
     },
 
     {

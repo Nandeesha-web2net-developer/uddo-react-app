@@ -30,7 +30,7 @@ const Dropdown = () => {
       <ul className='flex gap-2 text-[17px] w-[240px] flex-col p-6'>
         {TypesofJobs.map((item) => (
           <li key={item.id} className=' hover:text-green hover:font-semibold text-graynav'>
-            <Link to={item.path}>{item.title}</Link>
+            <Link target="_blank" to={item.path}>{item.title}</Link>
           </li>
         ))}
       </ul>

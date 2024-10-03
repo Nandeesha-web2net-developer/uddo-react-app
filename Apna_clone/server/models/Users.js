@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema({
   interviewAddress: String,
   description: String,
   qualification: String,
+  jobrole: String,
+  shift: String,
+  gender: String,
 });
 
 const UserModel = mongoose.model("Users", UserSchema);

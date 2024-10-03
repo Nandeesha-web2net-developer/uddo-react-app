@@ -8,6 +8,8 @@ import axios from 'axios';
 const MultiLevelMainForm = () => {
 
     const [jobtitle, setJobTitle] = useState('');
+    const [jobrole, setJobRole] = useState('');
+    const [shift, setShift] = useState('');
     const [companyname, setCompanyName] = useState('');
     const [workmode, setWorkMode] = useState('');
     const [salaryFrom, setSalaryFrom] = useState('');
@@ -21,6 +23,7 @@ const MultiLevelMainForm = () => {
     const [description, setDescription] = useState('');
     const [paytype, setPayType] = useState('');
     const [qualification, setQualification] = useState('');
+    const [gender, setGender] = useState('');
 
     const navigate = useNavigate();
 
@@ -28,9 +31,12 @@ const MultiLevelMainForm = () => {
         e.preventDefault();
         axios.post("http://localhost:5000/posting-new-job", {
             jobtitle,
+            jobrole,
             companyname,
             workmode,
+            shift,
             salaryFrom,
+            gender,
             salaryTo,
             paytype,
             jobtype,
@@ -44,7 +50,7 @@ const MultiLevelMainForm = () => {
         })
             .then(result => console.log(result))
             .catch(err => console.log(err));
-        navigate('/posting-new-job');
+        navigate('/admindashboard');
     };
 
     return (
@@ -63,6 +69,14 @@ const MultiLevelMainForm = () => {
                                 <input type='text'
                                     value={jobtitle}
                                     onChange={(e) => setJobTitle(e.target.value)}
+                                    placeholder='Eg. Softwrae Engeneer' required className='w-full h-10 mt-2 px-4 border-[1px] border-green rounded-md' />
+                            </div>
+
+                            <div className='my-10'>
+                                <label className='font-semibold'>Job Role / Category<span className=''>*</span> </label><br />
+                                <input type='text'
+                                    value={jobrole}
+                                    onChange={(e) => setJobRole(e.target.value)}
                                     placeholder='Eg. Softwrae Engeneer' required className='w-full h-10 mt-2 px-4 border-[1px] border-green rounded-md' />
                             </div>
                             <div className='my-10'>
@@ -84,14 +98,14 @@ const MultiLevelMainForm = () => {
                                             px: 3, // Padding X
                                             py: 0.6,
                                         }}
-                                        
-                                        >Part - Time</Button>
+
+                                    >Part - Time</Button>
 
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setJobType('full time')}
                                         sx={{
-                                        backgroundColor: jobtype === 'full time' ? '#03ACEE' : 'transparent',
+                                            backgroundColor: jobtype === 'full time' ? '#03ACEE' : 'transparent',
                                             color: jobtype === 'full time' ? 'white' : '#1976D2',
                                             px: 3, // Padding X
                                             py: 0.6,
@@ -102,10 +116,76 @@ const MultiLevelMainForm = () => {
                                         onClick={() => setJobType('part time & full time')}
                                         sx={{
                                             backgroundColor: jobtype === 'part time & full time' ? '#03ACEE' : 'transparent',
-                                                color: jobtype === 'part time & full time' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Both - (part tiem & full time)</Button>
+                                            color: jobtype === 'part time & full time' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Both - (part tiem & full time)</Button>
+                                </div>
+
+                            </div>
+                            <div className='my-10'>
+                                <label className='font-semibold'>Shift <span className=''>*</span> </label><br />
+                                <div className='mt-2 flex items-start gap-8'>
+                                    <Button variant="outlined" type='button'
+                                        onClick={() => setShift('Day Shift')}
+                                        sx={{
+                                            backgroundColor: shift === 'Day Shift' ? '#03ACEE' : 'transparent',
+                                            color: shift === 'Day Shift' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }}
+
+                                    >Day - Shift</Button>
+
+
+                                    <Button variant="outlined" type='button'
+                                        onClick={() => setShift('Night Shift')}
+                                        sx={{
+                                            backgroundColor: shift === 'Night Shift' ? '#03ACEE' : 'transparent',
+                                            color: shift === 'Night Shift' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Night - Shift</Button>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div className='my-10'>
+                                <label className='font-semibold'>Gender<span className=''>*</span> </label><br />
+                                <div className='mt-2 flex items-start gap-8'>
+                                    <Button variant="outlined" type='button'
+                                        onClick={() => setGender('male only')}
+                                        sx={{
+                                            backgroundColor: gender === 'male only' ? '#03ACEE' : 'transparent',
+                                            color: gender === 'male only' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }}
+
+                                    >Male only</Button>
+
+
+                                    <Button variant="outlined" type='button'
+                                        onClick={() => setGender('female only')}
+                                        sx={{
+                                            backgroundColor: gender === 'female only' ? '#03ACEE' : 'transparent',
+                                            color: gender === 'female only' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Female only</Button>
+
+
+                                    <Button variant="outlined" type='button'
+                                        onClick={() => setGender('male & female')}
+                                        sx={{
+                                            backgroundColor: gender === 'male & female' ? '#03ACEE' : 'transparent',
+                                            color: gender === 'male & female' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Both - (male & feamle)</Button>
                                 </div>
 
                             </div>
@@ -125,28 +205,28 @@ const MultiLevelMainForm = () => {
                                         onClick={() => setWorkMode('Work from Office')}
                                         sx={{
                                             backgroundColor: workmode === 'Work from Office' ? '#03ACEE' : 'transparent',
-                                                color: workmode === 'Work from Office' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Work from Office</Button >
+                                            color: workmode === 'Work from Office' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Work from Office</Button >
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setWorkMode('Work from Home')}
                                         sx={{
                                             backgroundColor: workmode === 'Work from Home' ? '#03ACEE' : 'transparent',
-                                                color: workmode === 'Work from Home' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Work from Home</Button >
+                                            color: workmode === 'Work from Home' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Work from Home</Button >
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setWorkMode('Remote')}
                                         sx={{
                                             backgroundColor: workmode === 'Remote' ? '#03ACEE' : 'transparent',
-                                                color: workmode === 'Remote' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }}>Remote</Button >
+                                            color: workmode === 'Remote' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }}>Remote</Button >
                                 </div>
 
                                 <div className='my-10'>
@@ -174,28 +254,28 @@ const MultiLevelMainForm = () => {
                                         onClick={() => setPayType('fixed only')}
                                         sx={{
                                             backgroundColor: paytype === 'fixed only' ? '#03ACEE' : 'transparent',
-                                                color: paytype === 'fixed only' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }}>Fixed Only</Button >
+                                            color: paytype === 'fixed only' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }}>Fixed Only</Button >
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setPayType('fixed + incentive')}
                                         sx={{
                                             backgroundColor: paytype === 'fixed + incentive' ? '#03ACEE' : 'transparent',
-                                                color: paytype === 'fixed + incentive' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Fixed + Incentive</Button >
+                                            color: paytype === 'fixed + incentive' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Fixed + Incentive</Button >
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setPayType('incentive')}
                                         sx={{
                                             backgroundColor: paytype === 'incentive' ? '#03ACEE' : 'transparent',
-                                                color: paytype === 'incentive' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Incetive</Button >
+                                            color: paytype === 'incentive' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Incetive</Button >
                                 </div>
 
                                 <div className='my-10'>
@@ -233,46 +313,46 @@ const MultiLevelMainForm = () => {
                                             onClick={() => setQualification('10th or below 10th')}
                                             sx={{
                                                 backgroundColor: qualification === '10th or below 10th' ? '#03ACEE' : 'transparent',
-                                                    color: qualification === '10th or below 10th' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >10th or below 10th</Button >
+                                                color: qualification === '10th or below 10th' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >10th or below 10th</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setQualification('12th pass')}
                                             sx={{
                                                 backgroundColor: qualification === '12th pass' ? '#03ACEE' : 'transparent',
-                                                    color: qualification === '12th pass' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >12th pass</Button >
+                                                color: qualification === '12th pass' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >12th pass</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setQualification('Diploma')}
                                             sx={{
                                                 backgroundColor: qualification === 'Diploma' ? '#03ACEE' : 'transparent',
-                                                    color: qualification === 'Diploma' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Diploma</Button >
+                                                color: qualification === 'Diploma' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Diploma</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setQualification('Graduate')}
                                             sx={{
                                                 backgroundColor: qualification === 'Graduate' ? '#03ACEE' : 'transparent',
-                                                    color: qualification === 'Graduate' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Graduate</Button >
+                                                color: qualification === 'Graduate' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Graduate</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setQualification('PostGraduate')}
                                             sx={{
                                                 backgroundColor: qualification === 'PostGraduate' ? '#03ACEE' : 'transparent',
-                                                    color: qualification === 'PostGraduate' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }}>PostGraduate</Button >
+                                                color: qualification === 'PostGraduate' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }}>PostGraduate</Button >
                                     </div>
                                 </div>
                                 <div>    <label className='font-semibold'>English level required <span className=''>*</span> </label><br />
@@ -280,38 +360,38 @@ const MultiLevelMainForm = () => {
                                         <Button variant="outlined" type='button'
                                             onClick={() => setEnglishLevel('no english')}
                                             sx={{
-                                                backgroundColor:  englishlevel === 'no english' ? '#03ACEE' : 'transparent',
-                                                    color:  englishlevel === 'no english' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >No English</Button >
+                                                backgroundColor: englishlevel === 'no english' ? '#03ACEE' : 'transparent',
+                                                color: englishlevel === 'no english' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >No English</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setEnglishLevel('basic english')}
                                             sx={{
-                                                backgroundColor:  englishlevel === 'basic english' ? '#03ACEE' : 'transparent',
-                                                    color:  englishlevel === 'basic english' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }}>Basic English</Button >
+                                                backgroundColor: englishlevel === 'basic english' ? '#03ACEE' : 'transparent',
+                                                color: englishlevel === 'basic english' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }}>Basic English</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setEnglishLevel('good english')}
                                             sx={{
-                                                backgroundColor:  englishlevel === 'good english' ? '#03ACEE' : 'transparent',
-                                                    color:  englishlevel === 'good english' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Good English</Button >
+                                                backgroundColor: englishlevel === 'good english' ? '#03ACEE' : 'transparent',
+                                                color: englishlevel === 'good english' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Good English</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setEnglishLevel('advanced english')}
                                             sx={{
-                                                backgroundColor:  englishlevel === 'advanced english' ? '#03ACEE' : 'transparent',
-                                                    color:  englishlevel === 'advanced english' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Advanced English</Button >
+                                                backgroundColor: englishlevel === 'advanced english' ? '#03ACEE' : 'transparent',
+                                                color: englishlevel === 'advanced english' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Advanced English</Button >
                                     </div></div>
 
                                 <div><label className='font-semibold'>Total experience required <span className=''>*</span> </label><br />
@@ -320,55 +400,55 @@ const MultiLevelMainForm = () => {
                                             onClick={() => setExperience('Any')}
                                             sx={{
                                                 backgroundColor: experience === 'Any' ? '#03ACEE' : 'transparent',
-                                                    color: experience === 'Any' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Any</Button >
+                                                color: experience === 'Any' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Any</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setExperience('1+ year exp')}
                                             sx={{
                                                 backgroundColor: experience === '1+ year exp' ? '#03ACEE' : 'transparent',
-                                                    color: experience === '1+ year exp' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }}>1+ Year Exp</Button >
+                                                color: experience === '1+ year exp' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }}>1+ Year Exp</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setExperience('2+ year exp')}
                                             sx={{
                                                 backgroundColor: experience === '2+ year exp' ? '#03ACEE' : 'transparent',
-                                                    color: experience === '2+ year exp' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >2+ Year Exp</Button >
+                                                color: experience === '2+ year exp' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >2+ Year Exp</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setExperience('4+ year exp')}
                                             sx={{
                                                 backgroundColor: experience === '4+ year exp' ? '#03ACEE' : 'transparent',
-                                                    color: experience === '4+ year exp' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >4+ Year Exp</Button >
+                                                color: experience === '4+ year exp' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >4+ Year Exp</Button >
 
                                         <Button variant="outlined" type='button'
                                             onClick={() => setExperience('6+ year exp')}
                                             sx={{
                                                 backgroundColor: experience === '6+ year exp' ? '#03ACEE' : 'transparent',
-                                                    color: experience === '6+ year exp' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >6+ Year Exp</Button >
+                                                color: experience === '6+ year exp' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >6+ Year Exp</Button >
 
                                         <Button variant="outlined" type='button'
-                                            onClick={() => setExperience('Any')}
+                                            onClick={() => setExperience('Freshers')}
                                             sx={{
-                                                backgroundColor: experience === 'Any' ? '#03ACEE' : 'transparent',
-                                                    color: experience === 'Any' ? 'white' : '#1976D2',
-                                                    px: 3, // Padding X
-                                                    py: 0.6,
-                                                }} >Freshers Only</Button >
+                                                backgroundColor: experience === 'Freshers' ? '#03ACEE' : 'transparent',
+                                                color: experience === 'Freshers' ? 'white' : '#1976D2',
+                                                px: 3, // Padding X
+                                                py: 0.6,
+                                            }} >Freshers Only</Button >
                                     </div></div>
 
 
@@ -409,19 +489,19 @@ const MultiLevelMainForm = () => {
                                         onClick={() => setInterviewType('in-person / walk-in interview')}
                                         sx={{
                                             backgroundColor: interviewType === 'in-person / walk-in interview' ? '#03ACEE' : 'transparent',
-                                                color: interviewType === 'in-person / walk-in interview' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >In-Person / Walk-in Interview</Button >
+                                            color: interviewType === 'in-person / walk-in interview' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >In-Person / Walk-in Interview</Button >
 
                                     <Button variant="outlined" type='button'
                                         onClick={() => setInterviewType('telephonic/online interview')}
                                         sx={{
                                             backgroundColor: interviewType === 'telephonic/online interview' ? '#03ACEE' : 'transparent',
-                                                color: interviewType === 'telephonic/online interview' ? 'white' : '#1976D2',
-                                                px: 3, // Padding X
-                                                py: 0.6,
-                                            }} >Telephonic/Online interview</Button >
+                                            color: interviewType === 'telephonic/online interview' ? 'white' : '#1976D2',
+                                            px: 3, // Padding X
+                                            py: 0.6,
+                                        }} >Telephonic/Online interview</Button >
                                 </div>
                             </div>
 

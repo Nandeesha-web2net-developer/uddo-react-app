@@ -19,7 +19,7 @@ const Popular_search = ({ title, heading, img, btn, mainHeading, gradient, borde
             }}
                 className='mb-0 mt-3 md:mt-8 font-bold text-[1.5rem]'>{heading}</h1>
             <img className='z-10 absolute bottom-0 right-0 h-full max-h-[130px] w-[100px] object-contain md:max-h-[180px] md:w-[45%]' src={img} />
-            <Link to={path}
+            <Link target="_blank" to={path}
                 style={{
                     backgroundColor: isHovered ? `${borderColor}` : 'transparent',
                     color: isHovered ? 'white' : 'black',
@@ -32,5 +32,5 @@ const Popular_search = ({ title, heading, img, btn, mainHeading, gradient, borde
         </div>
     );
 };
-
+    
 export default Popular_search;

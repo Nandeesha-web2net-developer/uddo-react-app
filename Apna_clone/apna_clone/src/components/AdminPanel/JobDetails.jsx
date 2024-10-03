@@ -6,6 +6,7 @@ import Faq_emp from '../Faqs/Faq_emp'
 import SearchLeftSidebar from '../Search_left_bar/SearchLeftSidebar'
 import MainJobList from '../Job_Listing/MainJobList'
 import Rightsidebar from '../Right_sidebars/Rightsidebar'
+import CandidateReview from '../Candidate_reviews/CandidateReview'
 
 // import fulltime from '../../imagse'
 // import experience from '../../imagse/exerience.avif'
@@ -26,9 +27,9 @@ const JobDetails = () => {
     }, []);
 
     return (
-        <div className='h-auto bg-gray'  >
-            <div className={header ? 'bg-white fixed border-graylight border-b-2 z-50' : 'bg-white'}>
-                < Navabar />
+        <div >
+            <div className={header ? 'bg-white sticky top-0 border-graylight border-b-2 z-50' : 'bg-gray'}>
+                <Navabar />
             </div>
 
             <div className='sm:px-4 md:px-[10%] justify-between flex sm:flex-col md:flex-row gap-5 py-8'>
@@ -45,6 +46,7 @@ const JobDetails = () => {
             <div className='md:px-0 sm:px-4'>
                 <Faq_emp />
             </div>
+            <div><CandidateReview /></div>
             <div>
                 <Loadmore />
             </div>
