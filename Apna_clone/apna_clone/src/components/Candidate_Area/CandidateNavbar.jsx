@@ -29,7 +29,6 @@ const CandidateNavbar = () => {
     const clsoseMobile = () => {
         setOpenMenu(false)
     }
-
     const toggleDropdownEnter = () => {
         setDropdown(true);
     };
@@ -51,36 +50,37 @@ const CandidateNavbar = () => {
                     <div className='flex items-center  space-x-9 w-[50%]' onMouseLeave={toggleDropdownLeave}>
 
                         <div className='relative' onMouseEnter={toggleDropdownEnter}  >
-                            <NavLink to="/jobDetails" className='flex items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>
-                                Jobs <span className='text-[14px]'> <FaChevronDown /></span>
+                            <NavLink to="/jobDetails" className='flex items-center gap-2 text-[14px] font-medium text-dark font-family-roboto hover:text-green'>
+                                Jobs <span className='text-[12px]'> <FaChevronDown /></span>
                             </NavLink>
                             {isDropdown && <Dropdown />}
                         </div>
 
                         <div className='relative'>
-                            <NavLink to="/jobDetails" className='flex items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>
-                                Career Compass <span className='text-[14px]'> <FaChevronDown /></span>
+                            <NavLink to="/jobDetails" className='flex items-center gap-2 text-[14px] font-medium text-dark font-family-roboto hover:text-green'>
+                                Career Compass <span className='text-[12px]'> <FaChevronDown /></span>
                             </NavLink>
 
                         </div>
 
                     </div>
                 </div>
-                <div  onClick={handleProfile} className='select-none flex relative items-center gap-2 cursor-pointer border-[1px] border-grayw rounded-full px-2 py-1'>
+                <div onClick={handleProfile} className='select-none flex relative items-center gap-2 cursor-pointer border-[1px] border-grayw rounded-full px-2 py-1'>
                     <img src={ReviewPlaceholder} className='w-[35px] rounded-full' />
                     <span className='text-[13px]'> <FaChevronDown /></span>
                     {profile && (
                         <div className='z-[10] absolute right-0 top-[-150px] w-[200px] bg-white login-box rounded-lg p-4 mt-[200px]'>
-                           
-                            <div className='text-grayw hover:bg-light px-2 py-1 rounded-md flex gap-4 items-center'>
+
+                            <Link to="/candidate/profile">  <div className='text-grayw hover:bg-light px-2 py-1 rounded-md flex gap-4 items-center'>
                                 <FaUser /> View Profile
                             </div>
+                            </Link>
                             <Link to='/'>       <div className='text-[#8a1313] mt-3 hover:bg-[#ffafaf5f] cursor-pointer px-2 py-1 flex gap-4 items-center'>
                                 <FaSignOutAlt /> Sign out
                             </div>
                             </Link>
                         </div>
-                        
+
                     )}
                 </div>
             </nav>

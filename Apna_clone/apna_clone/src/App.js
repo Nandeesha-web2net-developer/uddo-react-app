@@ -20,6 +20,7 @@ import Trial from './components/Trial';
 import CandidateLogin from './components/Candidate_Area/CandidateLogin';
 import CandidateJobDetails from './components/Candidate_Area/CandidateJobDetails';
 import CompleteJobDetails from './components/Candidate_Area/CompleteJobDetails';
+import CandidateProfile from './components/Candidate_Area/Candiddate_profile_Page/CandidateProfile';
 const App = () => {
   return (
     <div>
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/candidatelogin' element={<CandidateLogin />} />
           <Route path='/candidate/jobdetails' element={<CandidateJobDetails />} />
           <Route path="/candidate/completejobdetails/:id" element={<CompleteJobDetails />} />
+          <Route path="/candidate/profile" element={<CandidateProfile />} />
           
         </Routes>
       </BrowserRouter>
