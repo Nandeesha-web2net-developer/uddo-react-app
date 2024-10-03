@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navabar from '../Navigation_bar/Navbar'
 import Footer from '../Footer/Footer'
-import JobrightSection from './JobrightSection'
+import CandidateNavbar from './CandidateNavbar'
 import Loadmore from '../Loadmore/Loadmore'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -25,23 +25,14 @@ import {
 } from 'react-icons/fa'
 import Buttons from '../Buttons/Buttons'
 import CandidateReview from '../Candidate_reviews/CandidateReview'
+import JobDetailsRightSidebar from './JobDetailsRightSidebar'
 
-const JobDetailSection = () => {
-
-    const [popModel, setPopModel] = useState(false)
-
-    const popCLick = () => {
-        setPopModel(true)
-    }
-    const popClose = () => {
-        setPopModel(false)
-    }
-
+const CompleteJobDetails = () => {
 
     const { id } = useParams();
     const [jobDetails, setJobDetails] = useState(null);
     useEffect(() => {
-        axios.get(`http://localhost:5000/jobDetails/${id}`)
+        axios.get(`http://localhost:5000/candidate/jobdetails/${id}`)
             .then(result => setJobDetails(result.data))
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
@@ -54,32 +45,10 @@ const JobDetailSection = () => {
     return (
         <div >
 
-            <div className={popModel ? 'fixed bg-[#00000080] z-[400] flex items-center justify-center w-full h-full' : 'hidden'}>
-                <div className=' flex w-[100%] justify-center items-center flex-col shadow-e3'>
-
-                    <div className='bg-white relative  login-box  w-[35%] mt-10 p-10 rounded'>
-                        <div onClick={popClose} className='cursor-pointer absolute top-[5px] text-grayw text-[25px] right-[5px]'><FaTimesCircle /></div>
-                        <h1 className='text-login text-[26px] font-[600]'>Let's get started</h1>
-                        <p className='text-login text-[15px] mb-[1.5rem]'>Hire top talent faster with uddo</p>
-                        <form action="">
-                            <label className='text-login text-[15px] font-medium'>
-                                Mobile Number
-                            </label>
-                            <div className='relative pt-[5px] mb-[1.5rem]'><span className='absolute left-[8px] top-[14px]'>+91</span>
-                                <input type="tel" placeholder='Enter your mobile number' className='focus:outline-blue rounded border-[1px] border-login w-[100%] pl-12 py-[8.5px]' />
-                            </div>
-                            <input type="submit" className='hover:bg-greenhover flex w-full  justify-center items-center h-[42px]
-           text-center px-auto py-[8px] rounded font-bold bg-green text-white text-[16px]' value='Send OTP' />
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
 
             <div className='h-auto bg-gray'  >
-                <div className='bg-white sticky top-0 z-50'>
-                    < Navabar />
+                <div className='bg-white sticky top-0'>
+                  <CandidateNavbar />
                 </div>
 
                 <div className='sm:px-4 md:px-[8.4%] justify-between flex sm:flex-col md:flex-row pt-24 flx-col gap-5 pb-8'>
@@ -120,7 +89,7 @@ const JobDetailSection = () => {
                                         <h1 className='bg-gray px-[10px] py-[3px] text-[14px] text-grayw rounded flex flex-row gap-1 pb-[7px] items-center'><img src={englishlevel} alt="" className='w-[20px] mb-[0px]' /> {jobDetails.englishlevel}</h1></div>
 
                                     <div className='mt-4 w-full flex md:flex-row sm:flex-col gap-3'>
-                                        <div className='flex sm:w-[100%] md:w-[85%] justify-center items-center h-[42px] text-center px-auto pt-[8px] pb-[10px] rounded font-semibold bg-green text-white text-[16px]' onClick={popCLick}>   <Buttons btn_title="Apply for Job" />
+                                        <div className='flex sm:w-[100%] md:w-[85%] justify-center items-center h-[42px] text-center px-auto pt-[8px] pb-[10px] rounded font-semibold bg-green text-white text-[16px]' >   <Buttons btn_title="Apply for Job" />
                                         </div>
                                         <div className='flex sm:w-[100%] md:w-[15%] justify-center items-center h-[42px] text-center px-auto pt-[8px] pb-[10px] rounded border-[1px] border-green font-semibold text-green text-[16px] gap-2'> <span><FaShareAlt /></span>  <Buttons btn_title="Share" /></div>
                                     </div>
@@ -320,7 +289,7 @@ const JobDetailSection = () => {
                     </div>
 
                     <div className='md:w-[35%] sm:w-[100%]'>
-                        <JobrightSection />
+                      <JobDetailsRightSidebar />
                     </div>
                 </div>
 
@@ -335,4 +304,4 @@ const JobDetailSection = () => {
     )
 }
 
-export default JobDetailSection
+export default CompleteJobDetails

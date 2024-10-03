@@ -42,9 +42,9 @@ const CandidateNavbar = () => {
     return (
         <>
             <nav className='relative border-[1px] border-b-light md:flex h-16 items-center justify-between w-full sm:hidden sm:px-4 md:px-10'>
-                <div className='flex w-[40%]'>
+                <div className='flex w-[60%]'>
 
-                    <Link to='/' className='navbar-logo pr-10 w-[33.333%]'>
+                    <Link to='/' className='navbar-logo pr-10 w-[146px]'>
                         <img src={logo} alt="" />
                     </Link>
 

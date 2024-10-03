@@ -26,7 +26,7 @@ const MainJobList = () => {
     const workfromhome = queryParams.get('workmode');        // For Part-time
     const gender = queryParams.get('gender');        // For Part-time
     const shift = queryParams.get('shift');        // For Part-time
-    const qualification = queryParams.get('qualification');  
+    const qualification = queryParams.get('qualification');
     const locationcity = queryParams.get('location');       // For Part-time
 
     // // Filter jobs based on the query parameter (e.g., 'Freshers')

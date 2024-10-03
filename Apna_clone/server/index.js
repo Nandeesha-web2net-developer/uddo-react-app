@@ -27,6 +27,22 @@ app.get('/jobDetails/:id', (req, res) => {
         .catch(err => res.status(500).json({ error: 'Error fetching job details', details: err }));
 });
 
+app.get('/candidate/jobdetails', (req, res)=>{
+    UserModel.find({})
+    .then(users=>res.json(users))
+    .catch(err=>res.json(err))
+})
+
+app.get('/candidate/jobdetails/:id', (req, res) => {
+    const { id } = req.params; 
+    UserModel.findById(id)
+        .then(job => {
+            if (!job) return res.status(404).json({ error: 'Job not found' });
+            res.json(job);
+        })
+        .catch(err => res.status(500).json({ error: 'Error fetching job details', details: err }));
+});
+
 app.post("/posting-new-job", (req, res) => {
     UserModel.create(req.body)
         .then(result => res.json(result))

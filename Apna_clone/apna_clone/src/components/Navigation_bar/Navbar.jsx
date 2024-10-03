@@ -55,7 +55,7 @@ const Navabar = () => {
             <img src={logo} alt="" />
           </Link>
 
-          <div className='flex items-center  space-x-9 w-[50%]' onMouseLeave={toggleDropdownLeave}>
+          <div className='flex items-center  space-x-9 w-[60%]' onMouseLeave={toggleDropdownLeave}>
 
             <div className='relative' onMouseEnter={toggleDropdownEnter} onMouseLeave={loginDropdownLeave} >
               <NavLink to="/jobDetails" className='flex items-center gap-2 text-base font-medium text-dark font-family-roboto hover:text-green'>

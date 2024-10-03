@@ -19,6 +19,7 @@ import MultiLevelMainForm from './components/MultiLevelForm/MultiLevelMainForm';
 import Trial from './components/Trial';
 import CandidateLogin from './components/Candidate_Area/CandidateLogin';
 import CandidateJobDetails from './components/Candidate_Area/CandidateJobDetails';
+import CompleteJobDetails from './components/Candidate_Area/CompleteJobDetails';
 const App = () => {
   return (
     <div>
@@ -42,6 +43,8 @@ const App = () => {
           <Route path='/trial' element={<Trial />} />
           <Route path='/candidatelogin' element={<CandidateLogin />} />
           <Route path='/candidate/jobdetails' element={<CandidateJobDetails />} />
+          <Route path="/candidate/completejobdetails/:id" element={<CompleteJobDetails />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
